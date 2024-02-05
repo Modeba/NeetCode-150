@@ -1,0 +1,20 @@
+test1 = '()'
+test2 = '()[]{}'
+test3 = '(['
+test4 = '([)]'
+
+def isValid(s):
+    Map = {")": "(", "]": "[", "}": "{"}
+    stack = []
+    
+    for c in s:
+        if c not in Map:
+            stack.append(c)
+            continue
+        if not stack or stack[-1] != Map[c]:
+            return False
+        stack.pop()
+    
+    return not stack
+
+print(isValid(test4))
