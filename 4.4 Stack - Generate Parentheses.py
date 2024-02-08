@@ -10,13 +10,11 @@ def generateParenthesis(n):
         if openN < n:
             stack.append('(')
             backtrack(openN + 1, closedN)
-            print("open", stack)
             stack.pop()
             
         if closedN < openN:
             stack.append(')')
             backtrack(openN, closedN + 1)
-            print("closed", stack)
             stack.pop()
         
     backtrack(0, 0)
