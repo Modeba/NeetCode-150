@@ -12,3 +12,4 @@ def isAnagram(s, t):
         return True
 
 print(isAnagram('hello', 'ellho'))
+#test
