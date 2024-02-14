@@ -1,4 +1,6 @@
 test1 = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
+test2 = [[1]]
+test3 = [[1], [3]]
 
 def searchMatrix(matrix, target):
     def search(nums, target):
@@ -13,8 +15,10 @@ def searchMatrix(matrix, target):
                 return True
         return False
     
-    for i in range(2, len(matrix)):
+    for i in range(len(matrix)):
         if matrix[i][0] > target:
             return search(matrix[i - 1], target)
+    else:
+        return search(matrix[-1], target)
 
-print(searchMatrix(test1, 12))
+print(searchMatrix(test3, 4))
