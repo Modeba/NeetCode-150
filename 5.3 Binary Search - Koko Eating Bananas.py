@@ -1,18 +1,15 @@
+from math import ceil
+
 test1 = [3,6,7,11]
 test2 = [30,11,23,4,20]
 
 def minEatingSpeed(piles, h):
-    '''totalTime function goes over every value in Piles and sums up time taken by them.
-    Can be simplified with math.ceiling function'''
+    '''totalTime function goes over every value in Piles and sums up time taken by them'''
     def totalTime(piles, k):
         totalTime = 0
         for pile in piles:
-            if pile % k == 0:
-                hoursPerPile = pile / k
-            else:
-                hoursPerPile = pile // k + 1
-            totalTime += hoursPerPile
-        print(totalTime)
+            totalTime += ceil(pile / k)
+        print(k, totalTime)
         return totalTime
  
     '''Binary search between the lowest and the highest possible speeds'''
@@ -27,4 +24,4 @@ def minEatingSpeed(piles, h):
             l = m + 1
     return speed
 
-print(minEatingSpeed(test2, 5))
+print(minEatingSpeed(test1, 8))
