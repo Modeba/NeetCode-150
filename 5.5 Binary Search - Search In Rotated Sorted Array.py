@@ -14,7 +14,7 @@ def search(nums, target):
                 r = m - 1
         else:
             if target < nums[m] or target > nums[r]:
-                r = mid - 1
+                r = m - 1
             else:
                 l = m + 1
 

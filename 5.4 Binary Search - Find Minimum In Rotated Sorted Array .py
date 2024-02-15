@@ -1,5 +1,6 @@
 test1 = [3,4,5,1,2]
 test2 = [4,5,6,7,8,1,2,3]
+test3 = [2,1]
 
 def findMin(nums):
     l, r = 0, len(nums) - 1
@@ -18,4 +19,4 @@ def findMin(nums):
     
     return res
 
-print(findMin(test2))
+print(findMin(test3))
