@@ -1,15 +1,27 @@
 def lastRemaining(n):
-    numbers = [i for i in range(n + 1)]
+    numbers = [i for i in range(1, n + 1)]
 
     left_to_right = True
     while len(numbers) > 1:
-        if left_to_right == True:
+        if left_to_right:
             left_to_right = False
-            i = 0
-            while len(numbers) > 1 and i < len(numbers):
-                print(numbers)
-                numbers.remove[i]
-                i += 2
-            
+            for i in range(0, len(numbers), 2):
+                numbers[i] = False
+        else:
+            left_to_right = True
+            for i in range(-1, -len(numbers) - 1, -2):
+                numbers[i] = False
 
-print(lastRemaining(10))
+        temp = []
+        for num in numbers:
+            if num:
+                temp.append(num)
+        numbers = temp
+        
+    return numbers[0]
+
+x_val = []
+y_val = []
+
+for i in range(1, 96):
+    print(i, i - lastRemaining(i), lastRemaining(i))
