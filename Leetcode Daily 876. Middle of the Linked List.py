@@ -1,12 +1,17 @@
 class Solution:
-    def middleNode(self, head):
-        slow = fast = head
+    def deleteMiddle(self, head):
+        if head.next == None:
+            return None
+
+        slow = ListNode(0, head)
+        dummy = fast = head
 
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
-        return slow
+
+        slow.next = slow.next.next
+        return dummy
     
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -15,10 +20,18 @@ class ListNode:
 
 head = ListNode(0)
 current = head
-for i in range(1, 999999):
+for i in range(1, 9):
     current.next = ListNode(i)
     current = current.next
 
 solution = Solution()
-middle = solution.middleNode(head)
-print("Middle node:", middle.val)
+new_list = solution.deleteMiddle(head)
+
+# Check result
+result = []
+curr = head
+while curr:
+    result.append(curr.val)
+    curr = curr.next
+
+print(result)
