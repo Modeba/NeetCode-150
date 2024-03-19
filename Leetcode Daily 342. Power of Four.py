@@ -1,12 +1,12 @@
 def isPowerOfFour(n):
-    x = 0
-    sqr = x ** 4
-    while sqr <= n:
-        if sqr == n:
-            return x
-        x += 1
-        sqr = x ** 4
-    
-    return False
+    i = 0
+    sqr = 4 ** i
 
-print(isPowerOfFour(0))
+    while sqr <= n:
+        if 4 ** i == n:
+            return True
+        
+        i += 1
+        sqr = 4 ** i
+
+    return False
