@@ -6,8 +6,7 @@ def findDuplicates(nums):
         while nums[i] != i:
             print(nums)
             if nums[i] == nums[nums[i]]:
-                if nums[i] not in duplicates:
-                    duplicates.add(nums[i])
+                duplicates.add(nums[i])
                 break
             nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
     
