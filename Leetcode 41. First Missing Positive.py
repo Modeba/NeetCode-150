@@ -25,6 +25,14 @@ def firstMissingPositive(nums):
             return i
     else:
         return len(nums)
+    
+def firstMissingPositive2(nums):
+        nums = set(nums)
+        i = 1
+        while(i):
+            if i not in nums:
+                return i
+            i += 1
 
 print(firstMissingPositive(test1), 3, 'test1')
 print(firstMissingPositive(test2), 2, 'test2')
