@@ -12,6 +12,3 @@ def mergeAlternately(word1, word2):
     return res
 
 print(mergeAlternately('abc', 'defghi'))
-
-sss = 'abc'
-print(sss[3:])
