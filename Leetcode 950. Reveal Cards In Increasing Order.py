@@ -8,6 +8,7 @@ def deckRevealedIncreasing(deck):
     print(deck)
 
     for n in deck:
+        print(res, q)
         i = q.popleft()
         res[i] = n
         if q:
