@@ -10,6 +10,6 @@ def productExceptSelf(nums):
     res = []
     for i in range(len(nums)):
         res.append(left[i] * right[i + 1])
-    return res
+    return left, right
 
 print(productExceptSelf(test1))
