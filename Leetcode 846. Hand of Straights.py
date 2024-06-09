@@ -11,9 +11,10 @@ def isNStraightHand(hand, groupSize):
     sorted_keys = sorted(count.keys())
 
     for key in sorted_keys:
-        print(key)
+        
         if count[key] > 0:
             start_count = count[key]
+            print(key, start_count)
 
             for i in range(key, key + groupSize):
                 if count[i] < start_count:
