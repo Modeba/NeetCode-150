@@ -1,6 +1,6 @@
 test1 = [1,1,1]
 test2 = [1,1,1,1,1,1,1,1,-1,-1,1,1,1,1,-1,-1,1,1]
-
+    
 def subarraySum(nums, k):
     res = 0
     for i in range(len(nums)):

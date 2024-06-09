@@ -14,20 +14,18 @@ def subarraysDivByK(nums, k):
 
 
 def subarraysDivByK_Fast(nums, k):
-    res = 0
-    hashMap = {}
-    total_sum = 0
-    
-    for i in range(len(nums)):
-        total_sum += nums[i]
-        remainder = total_sum % k
+    res, cumulative_sum = 0, 0
+    hashmap = {0:1}
 
-        if remainder not in hashMap:
-            hashMap[remainder] = 1
-        else:
-            hashMap[remainder] += 1
-    
-    return hashMap
+    for num in nums:
+        cumulative_sum += num
+        remainder = cumulative_sum % k
+
+        res += hashmap.get(remainder, 0)
+        hashmap[remainder] = 1 + hashmap.get(remainder, 0)
+
+    return res
+
 
 print(subarraysDivByK(test1, 5))
 print(subarraysDivByK_Fast(test1, 5))
