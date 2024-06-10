@@ -1,29 +1,21 @@
-def threeSum(self, nums: List[int]) -> List[List[int]]:
-    res = []
-    # Sorting allows for two pointer approach
-    nums.sort()
+test1 = [0,1,0,2,1,0,1,3,2,1,2,1]
+test2 = [4,2,3]
 
-    for i in range(len(nums) - 2):
-        # To avoid duplicates we check if the element at i index is not
-        # the same as previus one. First element doesn't need this check
-        if i > 0 and nums[i] == nums[i - 1]:
-            continue
 
-        # Standard two pointer approach
-        l, r = i + 1, len(nums) - 1
-        while l < r:
-            Sum = nums[i] + nums[l] + nums[r]
-            if Sum > 0:
-                r -= 1
-            elif Sum < 0:
-                l += 1
+def trap(height):
+    def findPuddles(height, start, puddle, total, tallest, end):
+        for i in range(end):
+            if height[i] >= height[tallest]:
+                tallest = i
+            if height[i] < height[start]:
+                puddle += height[start] - height[i]
             else:
-                res.append([nums[i], nums[l], nums[r]])
-                # Update left pointer if the result is found to avoid ininite loop
-                l += 1
-                # To further avoid duplicates keep incrementing left pointer until
-                # a non duplicate value is found or it reaches right pointer
-                while nums[l] == nums[l - 1] and l < r:
-                    l += 1
+                total += puddle
+                puddle,start = 0, i
+        
+        return [total, tallest]
     
-    return res
+    myList = findPuddles(height, 0, 0, 0, 0, len(height))
+    return findPuddles(height[::-1], 0, 0, myList[0], myList[1], myList[1] + 2)[0]
+
+print(trap(test2))
