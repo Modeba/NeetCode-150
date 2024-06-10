@@ -1,19 +1,23 @@
-test1 = "A man, a plan, a canal: Panama"
-test2 = ""
-test3 = "a."
+test1 = [-1,0,1,2,-1,-4]
 
-def isPalindrome(s):
-    l, r = 0, len(s) - 1
-    while l <= r:
-        while l < r and not s[l].isalnum():
-            l += 1
-        while l < r and not s[r].isalnum():
-            r -= 1
-        if s[l].lower() != s[r].lower():
-            print(s[l:r + 1])
-            return False
-        l += 1
-        r -= 1
-    return True
+def threeSum(nums):
+    nums.sort()
+    res = []
 
-print(isPalindrome(test3))
+    for i in range(len(nums)):
+        print(nums[i])
+        temp_sum = nums[i]
+        l, r = i + 1, len(nums) - 1
+        
+        while l < r:
+            temp_sum += nums[l] + nums[r]
+            if temp_sum > 0:
+                r -= 1
+            elif temp_sum < 0:
+                l += 1
+            else:
+                res.append([nums[i], nums[l], nums[r]])
+    
+    return res
+
+print(threeSum(test1))
