@@ -1,21 +1,19 @@
-# Incomplete!
+test1 = [2,0,2,1,1,0]
+test2 = [0,1,2,0,1,2,0,0,0,0,0]
 
-test1 = [0,0,0,2,2,2,0,2,0,2,0,0,2,2]
-
-def asort(nums):
-    l = 0
-    r = len(nums) - 1
-
-    while l < r:
-        print(nums)
-        while nums[r] != 0:
-            r -= 1
-        while nums[l] != 2:
+def sortColorsOnePass(nums):
+    l, r = 0, len(nums) - 1
+    i = 0
+    while i <= r:
+        if nums[i] == 0:
+            nums[i], nums[l] = nums[l], nums[i]
             l += 1
-        nums[l], nums[r] = nums[r], nums[l]
-        r -= 1
-        l += 1
-
-        return nums
+        elif nums[i] == 2:
+            nums[i], nums[r] = nums[r], nums[i]
+            r -= 1
+            i -= 1
+        i += 1
     
-print(asort(test1))
+    return nums
+
+print(sortColorsOnePass(test2))
