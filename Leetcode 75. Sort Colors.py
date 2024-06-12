@@ -1,5 +1,6 @@
 test1 = [2,0,2,1,1,0]
 test2 = [0,1,2,0,1,2,0,0,0,0,0]
+test3 = [1,2,0]
 
 def sortColorsOnePass(nums):
     l, r = 0, len(nums) - 1
