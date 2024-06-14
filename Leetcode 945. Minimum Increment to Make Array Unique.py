@@ -3,24 +3,19 @@ test2 = [2,2,2,1]
 test3 = [1,2,2,2,2,3,3]
 
 def minIncrementForUnique(nums):
-    #counter = [0] * (10 ** 5 + 1)
     counter = [0] * (max(nums) + 1)
-    moves, stored = 0, 0
+    res, stored = 0, 0
 
     for num in nums:
         counter[num] += 1
-    
-    print(counter)
+
     for count in counter:
-        moves += stored
+        res += stored
         if count > 1:
             stored += (count - 1)
         elif count == 0 and stored > 0:
             stored -= 1
-    
-    while stored:
-        moves += stored
-        stored -= 1
-    return moves
+
+    return res + stored * (stored + 1) // 2
 
 print(minIncrementForUnique(test3))
