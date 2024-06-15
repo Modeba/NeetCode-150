@@ -1,21 +1,19 @@
-test1 = [0,1,0,2,1,0,1,3,2,1,2,1]
-test2 = [4,2,3]
+test1 = [-2,1,-3,4,-1,2,1,-5,4]
+test2 = [1,2,-1,-2,2,1,-2,1,4,-5,4]
 
-
-def trap(height):
-    def findPuddles(height, start, puddle, total, tallest, end):
-        for i in range(end):
-            if height[i] >= height[tallest]:
-                tallest = i
-            if height[i] < height[start]:
-                puddle += height[start] - height[i]
-            else:
-                total += puddle
-                puddle,start = 0, i
-        
-        return [total, tallest]
+def maxSubArray(nums):
+    res = sum(nums)
+    l, r = 0, len(nums) - 1
+    while l < r:
+        print(nums[l], nums[r], res, nums[l:r + 1])
+        if nums[l] > nums[r]:
+            r -= 1
+        elif nums[l] < nums[r]:
+            l += 1
+        else:
+            r -= 1
+        res = max(res, sum(nums[l:r + 1]))
     
-    myList = findPuddles(height, 0, 0, 0, 0, len(height))
-    return findPuddles(height[::-1], 0, 0, myList[0], myList[1], myList[1] + 2)[0]
+    return res
 
-print(trap(test2))
+print(maxSubArray(test2))
