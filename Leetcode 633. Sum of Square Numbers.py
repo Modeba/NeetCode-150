@@ -18,9 +18,12 @@ def judgeSquareSumFast(c):
     
     root = ceil(sqrt(c))
     for i in range(root + 1):
-        second = sqrt(c - i ** 2)
+        second = c - i ** 2
+        if second < 0:
+            break
+        second = sqrt(second)
         if second == int(second):
-            return i ** 2, second
+            return i, i ** 2, second, second ** 2
     return False
 
-print(judgeSquareSumFast(102))
+print(judgeSquareSumFast(549))
