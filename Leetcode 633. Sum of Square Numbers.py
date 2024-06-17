@@ -26,4 +26,40 @@ def judgeSquareSumFast(c):
             return i, i ** 2, second, second ** 2
     return False
 
-print(judgeSquareSumFast(549))
+def judgeSquareSumSet(c):
+    squares = set(i ** 2 for i in range(ceil(sqrt(c)) + 1))
+    for square in squares:
+        if c - square in squares:
+            return True
+    return False
+
+def judgeSquareSumTwoPointers(c):
+    squares = [i ** 2 for i in range(int(sqrt(c)) + 1)]
+    print(squares)
+    l, r = 0, len(squares) - 1
+
+    while l <= r:
+        s = squares[l] + squares[r]
+        if s < c:
+            l += 1
+        elif s > c:
+            r -= 1
+        else:
+            return True
+
+    return False 
+
+
+def judgeSquareSumTwoPointersNoArray(c):
+    l, r = 0, int(sqrt(c)) + 1
+    while l <= r:
+        s = l ** 2 + r ** 2
+        if s < c:
+            l += 1
+        elif s > c:
+            r -= 1
+        else:
+            return True
+    return False
+
+print(judgeSquareSumTwoPointersNoArray(4))
