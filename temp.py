@@ -1,19 +1,17 @@
-test1 = [-2,1,-3,4,-1,2,1,-5,4]
-test2 = [1,2,-1,-2,2,1,-2,1,4,-5,4]
+test1 = "pwwkew"
 
-def maxSubArray(nums):
-    res = sum(nums)
-    l, r = 0, len(nums) - 1
-    while l < r:
-        print(nums[l], nums[r], res, nums[l:r + 1])
-        if nums[l] > nums[r]:
-            r -= 1
-        elif nums[l] < nums[r]:
+def lengthOfLongestSubstring(s):
+    res, l, subs = 0, 0, set()
+
+    for char in s:
+        while char in subs:
+            subs.remove(s[l])
             l += 1
-        else:
-            r -= 1
-        res = max(res, sum(nums[l:r + 1]))
+
+        subs.add(char)
+        res = max(res, len(subs)) 
     
     return res
 
-print(maxSubArray(test2))
+
+print(lengthOfLongestSubstring(test1))
