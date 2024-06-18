@@ -1,17 +1,24 @@
 difficulty = [2,4,6,8,10]
+profit     = [10,20,30,40,50]
+worker     = [4,5,6,7]
 
-l, r = 0, len(difficulty)
+difficulty = [35,47,52,68,86]
+profit     = [67,17,1,81,3]
+worker     = [92,10,85,84,82]
 
-while l <= r:
-    print(l, r)
-    m = l + (r - l) // 2
-    if difficulty[m] > 4:
-        l = m
-    elif difficulty[m] < 4:
-        r = m
-    else:
-        print('=', difficulty[m])
-    l += 1
-    r -= 1
+def maxProfitAssignment(difficulty, profit, worker):
+    jobs = sorted(zip(difficulty, profit))
+    res, i, best = 0, 0, 0
+    print(jobs)
+
+    for ability in sorted(worker):
+        print(i, best, res)
+        while i < len(jobs) and ability >= jobs[i][0]:
+            best = max(best, jobs[i][1])
+            i += 1
+        res += best
     
-print(difficulty[m - 1])
+    return res
+
+
+print(maxProfitAssignment(difficulty, profit, worker))
