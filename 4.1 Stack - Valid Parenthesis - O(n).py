@@ -4,17 +4,14 @@ test3 = '(['
 test4 = '([)]'
 
 def isValid(s):
-    Map = {")": "(", "]": "[", "}": "{"}
+    pairs = {")": "(", "]": "[", "}": "{"}
     stack = []
     
-    for c in s:
-        if c not in Map:
-            stack.append(c)
+    for char in s:
+        if stack and stack[-1] == pairs.get(char, None):
+            stack.pop()
             continue
-        if not stack or stack[-1] != Map[c]:
-            return False
-        stack.pop()
-    
+        stack.append(char)
     return not stack
 
-print(isValid(test4))
+print(isValid(test3))
