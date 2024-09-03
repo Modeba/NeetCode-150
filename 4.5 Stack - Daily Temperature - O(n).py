@@ -15,8 +15,8 @@ def dailyTemperatures(temperatures):
     res, stack = [0 for _ in range(len(temperatures))], []
     for i in range(len(temperatures)):
         while stack and temperatures[stack[-1]] < temperatures[i]:
-            res[stack[-1]] = i - stack[-1]
-            stack.pop()
+            j = stack.pop()
+            res[j] = i - j
         stack.append(i)
     
     return res
