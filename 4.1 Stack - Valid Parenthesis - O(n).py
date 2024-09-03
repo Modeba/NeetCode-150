@@ -8,10 +8,14 @@ def isValid(s):
     stack = []
     
     for char in s:
-        if stack and stack[-1] == pairs.get(char, None):
-            stack.pop()
-            continue
-        stack.append(char)
+        stack.pop() if stack and stack[-1] == pairs.get(char, None) else stack.append(char)
+
     return not stack
 
-print(isValid(test3))
+def isValidShort(s):
+    pairs, stack = {")": "(", "]": "[", "}": "{"}, []
+    [stack.pop() if stack and stack[-1] == pairs[char] else stack.append(char) for char in s if char in pairs.values() or char in pairs]
+    return not stack
+
+print(isValid(test2))
+print(isValidShort(test2))
