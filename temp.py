@@ -1,9 +1,11 @@
-position = [10,8,0,5,3]
-speed = [2,4,1,1,3]
+matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
+target = 3
 
-pairs = zip(position, speed)
-
-res = [pair for pair in pairs]
-print(res)
-res.sort()
-print(res)
+def bin_search(matrix, target):
+    l, r = 0, len(matrix) - 1
+    while l <= r:
+        m = l + (r - l) // 2
+        if matrix[m][0] > target:
+            r = m - 1
+        elif matrix[m][0] < target:
+            
